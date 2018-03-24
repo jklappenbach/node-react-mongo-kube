@@ -1,0 +1,18 @@
+#
+# Ubuntu Nginx Dockerfile
+#
+# https://github.com/dockerfile/ubuntu/blob/master/Dockerfile
+#
+
+# Pull base image.
+FROM ubuntu:17.10
+
+# Install Node.js
+RUN apt-get update
+RUN apt-get install nginx
+RUN apt-get install -y build-essential
+RUN apt-get install -y less
+RUN apt-get install -y net-tools
+
+# Add node user
+RUN useradd -m -p D0D2Vf3lq2QQA -s /bin/bash nginx

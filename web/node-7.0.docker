@@ -1,0 +1,21 @@
+#
+# Ubuntu Node.js Dockerfile
+#
+# https://github.com/dockerfile/ubuntu/blob/master/Dockerfile
+# https://docs.docker.com/examples/nodejs_web_app/
+#
+
+# Pull base image.
+FROM ubuntu:17.10
+
+# Install Node.js
+RUN apt-get update
+RUN apt-get install -y curl
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+RUN apt-get install -y build-essential
+RUN apt-get install -y less
+RUN apt-get install -y net-tools
+
+# Add node user
+RUN useradd -m -p D0D2Vf3lq2QQA -s /bin/bash node
