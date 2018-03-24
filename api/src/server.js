@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 4545;
 const winston = require('winston');
 const logger = require('morgan');
-const companyRoutes = require('./routes/carrier.route');
+const companyRoutes = require('./routes/company.route');
 const db = require('./database');
 
 db.on('error', console.error.bind(console, 'connection error:'));

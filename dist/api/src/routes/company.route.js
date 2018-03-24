@@ -1,24 +1,28 @@
-const express = require('express');
-const router = express.Router();
-const Company = require('../models/company.model');
+'use strict';
 
-// Get all items
+var express = require('express');
+var router = express.Router();
+var Company = require('../models/company.model');
+var RestfyErrors = require('restify-errors');
+
+// Get all companies
 router.get('/companies', function (req, res, next) {
-  Company.find().exec().
-    then((data) => {
-      res.statusCode(200).json(data);
-    })
-    .catch((error) => { console.log(error) });
+  Company.find().exec().then(function (data) {
+    res.statusCode(200).json(data);
+  }).catch(function (error) {
+    console.log(error);
+    next(error);
+  });
 });
 
 // Get single item
 router.get('/companies/:id', function (req, res, next) {
-  const _id = req.params.id;
+  var _id = req.params.id;
   Company.findById(_id, function (err, data) {
     if (err) {
-      res.status(404).send();
+      res.statusCode(404).send({ error: err });
     } else {
-      res.json(data);
+      res.statusCode(200).json(data);
     }
   });
 });
@@ -74,3 +78,4 @@ router.put('/carrier/:id', function (req, res, next) {
 */
 
 module.exports = router;
+//# sourceMappingURL=company.route.js.map

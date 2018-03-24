@@ -14,7 +14,7 @@ const CompanySchema = new Schema({
     type: String,
     required: true,
   },
-  closing: [{
+  closingPrices: [{
     date: Date,
     price: Number,
   }],
