@@ -2,6 +2,7 @@
 
 var config = require('./config.json');
 var mongoose = require('mongoose');
+var winston = require('winston');
 
 var dbOptions = {
   db: { native_parser: true },
@@ -17,13 +18,16 @@ var dbOptions = {
     poolSize: 5,
     socketOptions: {
       keepAlive: 1000,
-      connectTimeoutMS: 5000
+      connectTimeoutMS: 30000
     }
   }
 };
 
-mongoose.Promise = Promise;
 mongoose.connect(config.db, dbOptions);
+mongoose.connection.on('error', console.error.bind(console, 'connection error!'));
+mongoose.connection.once('open', function () {
+  winston.log('info', 'Connected to the mongo replicaset');
+});
 
 module.exports = mongoose.connection;
 //# sourceMappingURL=database.js.map

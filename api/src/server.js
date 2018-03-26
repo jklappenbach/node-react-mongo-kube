@@ -7,15 +7,10 @@ const logger = require('morgan');
 const companyRoutes = require('./routes/company.route');
 const db = require('./database');
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  winston.log('info', 'Connected to the mongo replicaset');
-});
-
 // Body Parser
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api', companyRoutes);
 

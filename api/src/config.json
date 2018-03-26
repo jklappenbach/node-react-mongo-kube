@@ -1,3 +1,3 @@
 {
-  "db": "mongodb://mongod-0.mongodb-service,mongod-1.mongodb-service,mongod-2.mongodb-service:27017/dbname_?"
+  "db": "mongodb://proto:abc123@mongod-0.mongodb-service,proto:abc123@mongod-1.mongodb-service,proto:abc123@mongod-2.mongodb-service:27017/admin"
 }

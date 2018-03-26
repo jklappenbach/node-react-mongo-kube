@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
-var Item = require('../src/model/carrier.model');
+var Company = require('../src/model/company.model');
+const db = require('../src/database.js');
 
-mongoose.connect('mongodb://mongodb:27017');
-Item.collection.drop();
-var items = [
-  new Item({
+Company.collection.drop();
+var companies = [
+  new Company({
     name: '[Seed] Item 1',
     category: '[Seed] Category 1',
     count: 13

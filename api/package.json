@@ -1,23 +1,25 @@
 {
-  "name": "shipping-tracker-api",
+  "name": "proto-api",
   "version": "1.0.0",
-  "description": "Track shipping with MapBox and Fleetmon",
+  "description": "Prototype project template for k8 using node, mongo, and reactjs",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/server.js",
+    "populate": "node ./src/admin/populateDB.js",
     "dev": "nodemon --legacy-watch --inspect ./src/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jklappenbach/shipping-demo.git"
+    "url": "git+https://github.com/jklappenbach/node-react-mongo-kube.git"
   },
   "author": "jklappenbach",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/deniso95/warehouse_app/issues"
+    "url": "https://github.com/jklappenbach/node-react-mongo-kube/issues"
   },
-  "homepage": "https://github.com/deniso95/warehouse_app#readme",
+  "homepage": "https://github.com/jklappenbach/node-react-mongo-kube#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "babel-preset-env": "^1.6.1",
     "body-parser": "^1.15.2",
     "ejs": "^2.5.2",

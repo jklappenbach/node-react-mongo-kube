@@ -6,11 +6,11 @@ let Schema = mongoose.Schema;
  * https://apiv2.fleetmon.com/specs/#!/Vessel_Search/get_vesselsearch_listing#get-fleetextended-detail
  */
 const CompanySchema = new Schema({
-  ticker: {
+  name: {
     type: String,
     required: true,
   },
-  companyName: {
+  ticker: {
     type: String,
     required: true,
   },

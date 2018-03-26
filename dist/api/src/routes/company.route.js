@@ -8,7 +8,7 @@ var RestfyErrors = require('restify-errors');
 // Get all companies
 router.get('/companies', function (req, res, next) {
   Company.find().exec().then(function (data) {
-    res.statusCode(200).json(data);
+    res.status(200).json(data);
   }).catch(function (error) {
     console.log(error);
     next(error);
@@ -20,9 +20,9 @@ router.get('/companies/:id', function (req, res, next) {
   var _id = req.params.id;
   Company.findById(_id, function (err, data) {
     if (err) {
-      res.statusCode(404).send({ error: err });
+      res.status(404).send({ error: err });
     } else {
-      res.statusCode(200).json(data);
+      res.status(200).json(data);
     }
   });
 });
