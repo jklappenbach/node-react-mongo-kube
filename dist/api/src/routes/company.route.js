@@ -4,13 +4,14 @@ var express = require('express');
 var router = express.Router();
 var Company = require('../models/company.model');
 var RestfyErrors = require('restify-errors');
+var winston = require('winston');
 
 // Get all companies
 router.get('/companies', function (req, res, next) {
   Company.find().exec().then(function (data) {
     res.status(200).json(data);
   }).catch(function (error) {
-    console.log(error);
+    winston.log('error', error);
     next(error);
   });
 });

@@ -18,4 +18,6 @@ RUN apt-get install -y less
 RUN apt-get install -y net-tools
 
 # Add node user
-RUN useradd -m -p D0D2Vf3lq2QQA -s /bin/bash node
+RUN useradd -m -d /home/node/ -p D0D2Vf3lq2QQA -s /bin/bash node
+RUN usermod -aG sudo node
+RUN mkdir /home/node/web

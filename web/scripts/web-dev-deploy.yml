@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: proto-web
+  name: proto-web-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proto-web
+  template:
+    metadata:
+      labels:
+        app: proto-web
+      namespace: default
+    spec:
+      containers:
+      - name: proto-web
+        image: proto-web:0.1
+        command:
+        - ./run.sh
+        volumeMounts:
+        - name: web-code
+          mountPath: /home/node/web
+        ports:
+        - containerPort: 4545
+        - containerPort: 9229
+        workingDir: /home/node/web
+      volumes:
+      - name: web-code
+        hostPath:
+          path: /Users/julian/workspace/js/node-mongo-kube/web
