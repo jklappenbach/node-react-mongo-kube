@@ -1,12 +1,11 @@
 /**
  * Base population, to be run as part of the deployment business logic
  */
-const db = require('../database.js');
-var mongoose = require('mongoose');
-var Company = require('../models/company.model');
+require('../database.js');
+const Company = require('../models/company.model');
 
 Company.collection.drop();
-var companies = [
+const companies = [
   new Company({
     name: 'Microsoft',
     ticker: 'MSFT',
@@ -39,7 +38,7 @@ var companies = [
   }),
 ];
 
-var count = 0;
+let count = 0;
 companies.forEach((company) => {
   company.save((err) => {
     if (err) {

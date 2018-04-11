@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = class CarrierController {
   constructor() { }
 
@@ -15,4 +13,4 @@ module.exports = class CarrierController {
   update(req, res, next) {
 
   }
-}
+};

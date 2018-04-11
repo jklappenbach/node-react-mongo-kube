@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: proto-api
+  name: proto-api-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proto-api
+  template:
+    metadata:
+      labels:
+        app: proto-api
+      namespace: default
+    spec:
+      containers:
+      - name: proto-api
+        image: proto-api:0.1
+        command:
+        - ./run.sh
+        volumeMounts:
+        - name: api-code
+          mountPath: /home/node/api
+        ports:
+        - containerPort: 4545
+        - containerPort: 9229
+        workingDir: /home/node/api
+      volumes:
+      - name: api-code
+        hostPath:
+          path: /Users/julian/workspace/js/node-mongo-kube/api

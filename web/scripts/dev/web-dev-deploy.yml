@@ -28,6 +28,9 @@ spec:
         - containerPort: 4545
         - containerPort: 9229
         workingDir: /home/node/web
+        env:
+        - name: CHOKIDAR_USEPOLLING
+          value: "true"
       volumes:
       - name: web-code
         hostPath:

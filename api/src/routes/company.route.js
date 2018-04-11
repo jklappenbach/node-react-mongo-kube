@@ -1,27 +1,26 @@
-const express = require('express');
 const router = express.Router();
 const Company = require('../models/company.model');
-const RestfyErrors = require('restify-errors')
+const RestfyErrors = require('restify-errors');
 const winston = require('winston');
 
 // Get all companies
-router.get('/companies', function (req, res, next) {
+router.get('/companies', (req, res, next) => {
   Company.find().exec().
     then((data) => {
       res.status(200).json(data);
     })
     .catch((error) => {
       winston.log('error', error);
-      next(error);
+      next(new RestfyErrors.InternalServerError(error));
     });
 });
 
 // Get single item
-router.get('/companies/:id', function (req, res, next) {
+router.get('/companies/:id', (req, res, next) => {
   const _id = req.params.id;
-  Company.findById(_id, function (err, data) {
+  Company.findById(_id, (err, data) => {
     if (err) {
-      res.status(404).send({ error: err });
+      next(new RestfyErrors.InternalServerError(error));
     } else {
       res.status(200).json(data);
     }
